@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -16,6 +17,8 @@ public class Bootcamp {
     private Long bootcampId;
     private String name;
     private String description;
+    private LocalDate launchDate;
+    private Integer duration;
 
     private List<Capacity> capacities;
     private List<Person> persons;

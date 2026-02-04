@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonRequest {
+public class PersonDTO {
     private Long id;
     private String name;
     private String email;

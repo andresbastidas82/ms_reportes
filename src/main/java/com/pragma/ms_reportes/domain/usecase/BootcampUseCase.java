@@ -1,13 +1,14 @@
 package com.pragma.ms_reportes.domain.usecase;
 
 import com.pragma.ms_reportes.domain.api.IBootcampServicePort;
-import com.pragma.ms_reportes.domain.exceptions.BootcampAlreadyExistsException;
-import com.pragma.ms_reportes.domain.exceptions.NotFoundException;
+import com.pragma.ms_reportes.domain.exception.BootcampAlreadyExistsException;
+import com.pragma.ms_reportes.domain.exception.NotFoundException;
 import com.pragma.ms_reportes.domain.model.Bootcamp;
 import com.pragma.ms_reportes.domain.spi.IBootcampPersistencePort;
 import com.pragma.ms_reportes.domain.spi.IPersonClientPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class BootcampUseCase implements IBootcampServicePort {
                         )
                 )
                 .switchIfEmpty(
-                        bootcampPersistencePort.createOrUpdateBootcamp(bootcamp)
+                        Mono.defer(() -> bootcampPersistencePort.createOrUpdateBootcamp(bootcamp))
                 );
     }
 
@@ -51,6 +52,11 @@ public class BootcampUseCase implements IBootcampServicePort {
                                 })
                 )
                 .thenReturn(true);
+    }
+
+    @Override
+    public Flux<Bootcamp> findTopBootcamps(int limit) {
+        return bootcampPersistencePort.findTopBootcamps(limit);
     }
 
 

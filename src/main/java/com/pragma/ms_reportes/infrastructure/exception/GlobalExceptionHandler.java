@@ -1,8 +1,8 @@
 package com.pragma.ms_reportes.infrastructure.exception;
 
-import com.pragma.ms_reportes.domain.exceptions.BootcampAlreadyExistsException;
-import com.pragma.ms_reportes.domain.exceptions.InvalidBootcampException;
-import com.pragma.ms_reportes.domain.exceptions.NotFoundException;
+import com.pragma.ms_reportes.domain.exception.BootcampAlreadyExistsException;
+import com.pragma.ms_reportes.domain.exception.InvalidBootcampException;
+import com.pragma.ms_reportes.domain.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

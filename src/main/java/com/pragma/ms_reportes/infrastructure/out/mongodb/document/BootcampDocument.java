@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -16,6 +17,8 @@ public class BootcampDocument {
     private Long bootcampId;
     private String name;
     private String description;
+    private LocalDate launchDate;
+    private Integer duration;
 
     private List<CapacityDocument> capacities;
     private List<PersonDocument> persons;

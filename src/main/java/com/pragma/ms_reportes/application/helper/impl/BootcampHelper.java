@@ -1,12 +1,14 @@
 package com.pragma.ms_reportes.application.helper.impl;
 
 import com.pragma.ms_reportes.application.dto.BootcampRequest;
+import com.pragma.ms_reportes.application.dto.BootcampResponse;
 import com.pragma.ms_reportes.application.dto.GeneralResponse;
 import com.pragma.ms_reportes.application.helper.IBootcampHelper;
 import com.pragma.ms_reportes.application.mapper.IBootcampRequestMapper;
 import com.pragma.ms_reportes.domain.api.IBootcampServicePort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -35,5 +37,11 @@ public class BootcampHelper implements IBootcampHelper {
                         .message("Persona registrada en el bootcamp")
                         .build()
                 );
+    }
+
+    @Override
+    public Flux<BootcampResponse> findTopBootcamps(int limit) {
+        return bootcampServicePort.findTopBootcamps(limit)
+                .map(bootcampRequestMapper::toBootcampResponse);
     }
 }

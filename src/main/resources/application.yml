@@ -5,3 +5,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/ms_reportes
+
+services:
+  persons:
+    base-url: http://localhost:8093/api/v1

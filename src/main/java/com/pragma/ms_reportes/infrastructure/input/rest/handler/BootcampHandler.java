@@ -38,4 +38,15 @@ public class BootcampHandler {
 
     }
 
+    public Mono<ServerResponse> findTopBootcamps(ServerRequest request) {
+        int limit = Integer.parseInt(request.queryParam("limit").orElse("1"));
+
+        return bootcampHelper.findTopBootcamps(limit)
+                .collectList()
+                .flatMap(response ->
+                        ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(response));
+    }
+
 }

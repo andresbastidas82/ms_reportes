@@ -1,6 +1,6 @@
 package com.pragma.ms_reportes.infrastructure.out.client;
 
-import com.pragma.ms_reportes.domain.exceptions.NotFoundException;
+import com.pragma.ms_reportes.domain.exception.NotFoundException;
 import com.pragma.ms_reportes.domain.model.Person;
 import com.pragma.ms_reportes.domain.spi.IPersonClientPort;
 import org.springframework.beans.factory.annotation.Qualifier;
